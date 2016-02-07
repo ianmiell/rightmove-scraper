@@ -1,8 +1,8 @@
-var casper = require('casper').create({
-verbose: true,
-logLevel: 'debug'
-});
-//var casper = require('casper').create();
+//var casper = require('casper').create({
+//verbose: true,
+//logLevel: 'debug'
+//});
+var casper = require('casper').create();
 
 
 //casper.on('resource.requested', function(resource) {
@@ -17,12 +17,11 @@ logLevel: 'debug'
 
 //casper.userAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X)');
 casper.start();
-//url='http://google.com';
 url='http://www.rightmove.co.uk/house-prices-in-my-area/marketTrendsTotalAvailableListingsAndNew.html?searchLocation=POSTCODE';
 casper.thenOpen(url, function() {
-	this.echo('asd')
-    if (this.exists('table')) {
-		this.echo('seen table')
+    if (this.exists('div#trendData')) {
+		text=this.getHTML('div#trendData')
+		this.echo(text)
 	}
 });
 
