@@ -6,4 +6,4 @@ then
 	exit 1
 fi
 sed -i "s/POSTCODE/$1/" marketed.js
-casperjs marketed.js
+casperjs marketed.js | ./html_to_csv.py
